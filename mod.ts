@@ -111,10 +111,11 @@ function Parser(raw: string): Output {
 
 export default async function Ping(
   destination: string,
-  times: number = 4
+  times: number = 4,
+  timeout: number = 5
 ): Promise<Output> {
   let result = await exec(
-    `ping ${destination} -c ${times}`,
+    `ping ${destination} -c ${times} -t ${timeout}`,
     {
       output: OutputMode.Capture
     }
